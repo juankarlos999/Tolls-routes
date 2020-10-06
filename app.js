@@ -3,7 +3,19 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var app = express();
 
-// view engine setup
+
+//conect to the data base
+const mongoDB = `mongodb+srv://${nameDb}:${passwdDb}@` +
+  `cluster0.rq3kf.mongodb.net/${dbName}?retryWrites=true&w=majority` || 'mongodb://localhost:27017/Peajes';
+
+
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
