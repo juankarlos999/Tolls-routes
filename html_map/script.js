@@ -56,35 +56,35 @@ function createMap () {
   searchBoxDest.addListener('places_changed', function () {
     var placesDest = searchBoxDest.getPlaces();
   }); 
-  // Array of markers
+
+// Array of markers
 var markers = [
-  {
-    coords:{lat:6.32613,lng:-75.68854},
-    iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    content:'<p>ANTIOQUIA <br> toll name: Túnel de Occidente</p>'
-  },
-  {
-    coords:{lat:6.04676,lng:-75.65995},
-    content:'<p>ANTIOQUIA <br> toll name: 857c9dea-e25e-4c87-aab2-97bce6e1b4ad</p>'
-  },
-  {
-    coords:{lat:6.39575,lng:-75.42351},
-    content:'<p>ANTIOQUIA <br> toll name: cabildo</p>'
-  }
+{
+  coords:{lat:6.32613,lng:-75.68854},
+  content:'<p>ANTIOQUIA <br> toll name: Túnel de Occidente</p>'
+},
+{
+  coords:{lat:6.04676,lng:-75.65995},
+  content:'<p>ANTIOQUIA <br> toll name: 857c9dea-e25e-4c87-aab2-97bce6e1b4ad</p>'
+},
+{
+  coords:{lat:6.39575,lng:-75.42351},
+  content:'<p>ANTIOQUIA <br> toll name: cabildo</p>'
+}
 ];
 // Loop through markers
-for(var i = 0;i < markers.length;i++){
-  // Add marker
-  addMarker(markers[i]);
+for(var i = 0; i < markers.length; i++){
+// Add marker
+addMarker(markers[i]);
 }
-
 // Add Marker Function
 function addMarker(props){
   var marker = new google.maps.Marker({
-    position:props.coords,
-    map:map,
+    position: props.coords,
+    map: map,
     icon: image
   });
+  
   // Check content
   if(props.content){
     var infoWindow = new google.maps.InfoWindow({
