@@ -49,7 +49,8 @@ function createMap(){
   }  
 
     // Request Api for Array of markers
-    var requestTolls = new Request('http://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/tolls', {
+    var urlServ = 'http://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/tolls';
+    var requestTolls = new Request(urlServ, {
       method: 'GET',
       mode: 'cors'
      });
@@ -57,7 +58,7 @@ function createMap(){
       const response = await fetch(requestTolls);
       const respTolls = await response.json();
       console.log(respTolls);
-      // Loop through markers
+      // Loop through data(coordinates - name)
       for(i of respTolls.data.tolls){
         addMarker(i);
         //console.log(i.name);
@@ -67,10 +68,10 @@ function createMap(){
         var marker = new google.maps.Marker({
          position: props.coordinates,
          map: map,
-         icon: image
+         icon: 'drawToll.jpg'
        });
        
-       // Check content name Toll
+       // Check content name vg
        if(props.name){
          var infoWindow = new google.maps.InfoWindow({
            content:props.name
