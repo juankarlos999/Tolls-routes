@@ -2,7 +2,7 @@ var map, geometryOutputOrigin, geometryOutputDest, inputOrigin, inputDest;
 const image =
 "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
-// Create Map
+// Create Map location Colombia
 function createMap(){
   var options = {
     center: { lat: 4.570868, lng: -74.297333 },
@@ -46,46 +46,42 @@ function createMap(){
       }
     }
   );
-  }
+  }  
 
-    /*[
-    {
-      coords:{lat:6.32613,lng:-75.68854},
-      content:'<p>ANTIOQUIA <br> toll name: Túnel de Occidente</p>'
-    },
-    {
-      coords:{lat:6.04676,lng:-75.65995},
-      content:'<p>ANTIOQUIA <br> toll name: 857c9dea-e25e-4c87-aab2-97bce6e1b4ad</p>'
-    },
-    {
-      coords:{lat:6.39575,lng:-75.42351},
-      content:'<p>ANTIOQUIA <br> toll name: cabildo</p>'
-    }
-    ];
-    // Loop through markers
-    for(var i = 0; i < markers.length; i++){
-    // Add marker
-    addMarker(markers[i]);
-    }
-  
-    // Add Marker Function
-    function addMarker(props){
-      var marker = new google.maps.Marker({
-        position: props.coords,
-        map: map,
-        icon: image
-      });
-
-      // Check content
-      if(props.content){
-        var infoWindow = new google.maps.InfoWindow({
-          content:props.content
-        });
-        marker.addListener('click', function(){
-          infoWindow.open(map, marker);
-        });
+    // Request Api for Array of markers
+    var requestTolls = new Request('http://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/tolls', {
+      method: 'GET',
+      mode: 'cors'
+     });
+    async function apiTolls(){
+      const response = await fetch(requestTolls);
+      const respTolls = await response.json();
+      console.log(respTolls);
+      // Loop through markers
+      for(i of respTolls.data.tolls){
+        addMarker(i);
+        //console.log(i.name);
       }
-     } */
+      // Add Marker Function 
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+         position: props.coordinates,
+         map: map,
+         icon: image
+       });
+       
+       // Check content name Toll
+       if(props.name){
+         var infoWindow = new google.maps.InfoWindow({
+           content:props.name
+         });
+         marker.addListener('click', function(){
+           infoWindow.open(map, marker);
+         });
+       } 
+      }
+    }
+    locationForm.addEventListener('submit', apiTolls);
 }
 
 // Get location form
@@ -94,6 +90,7 @@ var locationForm = document.getElementById('floating-form');
 locationForm.addEventListener('submit', geocodeOrigin);
 locationForm.addEventListener('submit', geocodeDest);
 locationForm.addEventListener('submit', typeVehFuel);
+
 
 // Call geocodeOrigin
 function geocodeOrigin(e){
@@ -107,7 +104,7 @@ function geocodeOrigin(e){
   axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
     params:{
       address: locationOrign,
-      key:'KEY'
+      key:'AIzaSyB-P6jVyGDXY6xDBD6YvbTvkRdABv1Rejo'
     }
   })
   .then(function(response){
@@ -142,7 +139,7 @@ function geocodeDest(e){
   axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
     params:{
       address: locationDest,
-      key:'KEY'
+      key:'AIzaSyB-P6jVyGDXY6xDBD6YvbTvkRdABv1Rejo'
     }
   })
   .then(function(response){
@@ -173,16 +170,3 @@ function typeVehFuel(){
   var optionFuel= typeFuel.options[typeFuel.selectedIndex].value;
   console.log(optionFuel, optionVehicle);
 }
-
-
-// Request Api for Array of markers
-var url = 'http://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/tolls';
-const response = fetch(url, {
-  'mode': 'cors',
-  'headers': {
-      'Access-Control-Allow-Origin': '*',
-      "Access-Control-Allow-Methods": "GET"
-  }
-});
-
-console.log(response);
