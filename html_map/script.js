@@ -96,7 +96,7 @@ function createMap(){
         var marker = new google.maps.Marker({
          position: props.coordinates,
          map: map,
-         icon: 'drawToll.jpg'
+         icon: 'img/toll-route.svg'
        });
        
        // Check content name vg
