@@ -135,7 +135,7 @@ function geocodeOrigin(e){
   axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
     params:{
       address: locationOrign,
-      key:'AIzaSyDUU1bnQ03PRR_22wBR6uCV9hqXDMk4TlQG0'
+      key:'PUT-YOUR-KEY'
     }
   })
   .then(function(response){
@@ -172,7 +172,7 @@ function geocodeDest(e){
   axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
     params:{
       address: locationDest,
-      key:'AIzaSyDUU1bnQ03PRR_22wBR6uCV9hqXDMk4TlQG0'
+      key:'PUT-YOUR-KEY'
     }
   })
   .then(function(response){
