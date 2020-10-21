@@ -172,7 +172,7 @@ function createMap(){
       console.log(error);
       if(ErrorEvent){
         alert("Ups! your ORIGIN is INVALID. Please try again.");
-        document.getElementById('location-input-1').value = "";
+        location.reload();
       }
     })
   }
@@ -209,17 +209,22 @@ function createMap(){
       console.log(error);
       if(ErrorEvent){
         alert("Ups! your DESTINATION is INVALID. Please try again.");
-        document.getElementById('location-input-2').value = "";
+        location.reload();
       }
     })
   }
   
   // Catch inputs type fuel and vehicle
     function typeVehFuel(){
-    var typeVehicle = document.getElementById('vehicle');
-    optionVehicle = typeVehicle.options[typeVehicle.selectedIndex].value;
-    var typeFuel = document.getElementById('fuel');
-    //var optionFuel= typeFuel.options[typeFuel.selectedIndex].value;
+      //var typeFuel = document.getElementById('fuel');
+      //var optionFuel= typeFuel.options[typeFuel.selectedIndex].value;
+      var typeVehicle = document.getElementById('vehicle');
+      optionVehicle = typeVehicle.options[typeVehicle.selectedIndex].value;
+    
+      if(optionVehicle === "Vehicle type"){
+        alert("Ups! Vehicle type is EMPTY. Please try again.");
+        location.reload();
+      } else {
     console.log(optionVehicle);
-    // Return the information sessionStorage
+      }
   }
