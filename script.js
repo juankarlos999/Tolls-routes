@@ -47,8 +47,8 @@ function createMap(){
   );
   }  
 
-  var urlServTolls = 'https://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/tolls';
-  var urlServApi = 'https://quickapi-env.eba-tkndff3x.us-east-1.elasticbeanstalk.com/api/routes/tolls';
+  var urlServTolls = 'https://api.fulldevs.software/tolls';
+  var urlServApi = 'https://api.fulldevs.software/routes/tolls';
     
   async function apiTolls(){
     if (geometryOutputOrigin && geometryOutputDest && optionVehicle) {
