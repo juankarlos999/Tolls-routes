@@ -228,3 +228,5 @@ function createMap(){
           console.log(optionVehicle);
       }
   }
+
+  console.log('hola ');
