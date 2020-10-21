@@ -48,7 +48,7 @@ function createMap(){
   }  
 
   var urlServTolls = 'https://api.fulldevs.software/tolls';
-  var urlServApi = 'https://api.fulldevs.software/api/routes/tolls';
+  var urlServApi = 'https://api.fulldevs.software/routes/tolls';
     
   async function apiTolls(){
     if (geometryOutputOrigin && geometryOutputDest && optionVehicle) {
@@ -228,5 +228,3 @@ function createMap(){
           console.log(optionVehicle);
       }
   }
-
-  console.log('hola ');
