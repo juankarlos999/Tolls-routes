@@ -74,7 +74,7 @@ function createMap(){
      });
     const response = await fetch(requestTolls);
     const respTolls = await response.json();
-    //console.log('Response api/route/tolls :', respTolls);
+    console.log('Response api/route/tolls :', respTolls);
   
     // Loop through data(coordinates - name)
     for(i of respTolls.tolls){
@@ -86,7 +86,7 @@ function createMap(){
       var marker = new google.maps.Marker({
        position: props.coordinates,
        map: map,
-       icon: 'img/toll-route.svg'
+       icon: 'img/toll2.svg'
      });
     // Show popup window information Route
     var kms = parseInt(respTolls.total_kms);
@@ -154,7 +154,7 @@ function createMap(){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address: locationOrign,
-        key:'AIzaSyDUU1bnQ03PRR_wBR6uCV9hqXDMk4TlQG0'
+        key:'AIzaSyBEkFXqf_FJ7iP0arEho99vcCfrWOojTfM'
       }
     })
     .then(function(response){
@@ -189,7 +189,7 @@ function createMap(){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address: locationDest,
-        key:'AIzaSyDUU1bnQ03PRR_wBR6uCV9hqXDMk4TlQG0'
+        key:'AIzaSyBEkFXqf_FJ7iP0arEho99vcCfrWOojTfM'
       }
     })
     .then(function(response){
