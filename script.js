@@ -144,7 +144,7 @@ function createMap(){
   function geocodeOrigin(e){
     // Prevent actual submit
     e.preventDefault();
-    var locationOrign = document.getElementById('location-input-1').value;
+    var locationOrign = document.getElementById('Ibaguélocation-input-1').value;
     
     if(!locationOrign){
       alert("Ups! your ORIGIN is EMPTY. Please try again.");
