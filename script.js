@@ -154,7 +154,7 @@ function createMap(){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address: locationOrign,
-        key:'AIzaSyBEkFXqf_FJ7iP0arEho99vcCfrWOojTfM'
+        key:''
       }
     })
     .then(function(response){
@@ -189,7 +189,7 @@ function createMap(){
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address: locationDest,
-        key:'AIzaSyBEkFXqf_FJ7iP0arEho99vcCfrWOojTfM'
+        key:''
       }
     })
     .then(function(response){
