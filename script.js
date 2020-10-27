@@ -144,7 +144,7 @@ function createMap(){
   function geocodeOrigin(e){
     // Prevent actual submit
     e.preventDefault();
-    var locationOrign = document.getElementById('Ibaguélocation-input-1').value;
+    var locationOrign = document.getElementById('location-input-1').value;
     
     if(!locationOrign){
       alert("Ups! your ORIGIN is EMPTY. Please try again.");
@@ -195,8 +195,10 @@ function createMap(){
     .then(function(response){
       console.log('Response Dest', response);
   
-      var lat = response.data.results[0].geometry.location.lat;
-      var lng = response.data.results[0].geometry.location.lng;
+      lat = response.data.results[0].geometry.location.lat;
+      sessionStorage.getItem('lat', lat);
+      lng = response.data.results[0].geometry.location.lng;
+      sessionStorage.getItem('lng', lng);
       geometryOutputDest = {lat:lat, lng:lng};
       console.log('Destination:', geometryOutputDest);
   
