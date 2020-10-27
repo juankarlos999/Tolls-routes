@@ -195,10 +195,8 @@ function createMap(){
     .then(function(response){
       console.log('Response Dest', response);
   
-      lat = response.data.results[0].geometry.location.lat;
-      sessionStorage.getItem('lat', lat);
-      lng = response.data.results[0].geometry.location.lng;
-      sessionStorage.getItem('lng', lng);
+      var lat = response.data.results[0].geometry.location.lat;
+      var lng = response.data.results[0].geometry.location.lng;
       geometryOutputDest = {lat:lat, lng:lng};
       console.log('Destination:', geometryOutputDest);
   
