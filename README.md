@@ -1,5 +1,5 @@
 # Quick project ⚡️
-## URL test https://api-quick.herokuapp.com/home.html
+## URL test https://smart-route-62bd4.web.app/
 ## API rest
 
 This project solves the problem of calculating the total cost of the trip by a route with precision.
